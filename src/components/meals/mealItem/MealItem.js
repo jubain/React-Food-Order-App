@@ -1,14 +1,14 @@
 import { useContext } from 'react';
-import CartContext from '../../../store/cart-context';
+import { CartContext } from '../../../store/CartProvider';
 import classes from './MealItem.module.css'
 import MealItemForm from './MealItemForm';
 function MealItem(props) {
     // always render 2 decimal places
     const price = `$${props.price.toFixed(2)}`
-    const cartCtx = useContext(CartContext)
+    const { addItem } = useContext(CartContext)
 
     const addToCard = (amount) => {
-        cartCtx.addItem({
+        addItem({
             id: props.id,
             name: props.name,
             amount: amount,
